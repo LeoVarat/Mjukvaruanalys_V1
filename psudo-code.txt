@@ -1,0 +1,57 @@
+OUTPUT "Hej och välkommen till Furtons Pandasjukhus, Pandasjukhuset online för just din panda!"
+OUTPUT "Före ni talar med en legitimerad, doktorerad och lobotomerad specialist, svara gärna på följande frågor:"
+OUTPUT "1. Tillhör ni en statlig myndighet?"
+INPUT security_test_1
+
+IF security_test_1 EQUAL "Ja"
+OUTPUT "Oh Snap!", exit application
+
+ELSE
+
+OUTPUT " Är du helt säker?"
+INPUT security_test_2
+
+IF security_test_2 EQUAL "Nej", exit application
+ELSE
+
+OUTPUT "Lovar?"
+INPUT security_test_3
+
+IF security_test_3 EQUAL "Nej", exit application
+ELSE
+
+OUTPUT "Nu har ni passerat vårt säkerhetstest. Har Ni konto sedan tidigare?"
+INPUT registerd_user
+
+IF registerd_user EQUAL "Ja" redirect "Logg in"
+ELSE, 
+OUTPUT "Fyll i din mailadress" 
+INPUT user_email
+
+OUTPUT "Detta är en rubrik, beskriv kortfattat vad det handlar om:"
+INPUT header
+
+OUTPUT "Beskriv väldigt detaljerat vad det egentligen handlar om:"
+INPUT boring_text
+
+OUTPUT "Hur skulle du klassa skadan/sjukdommen?"
+CHOICE customer_status
+1. OUTPUT "Väldigt allvarligt/bråttom"
+2. OUTPUT "Önskar normal väntetid"
+3. OUTPUT "Inte allvarlig alls, hade bara lite tråkigt och tänkte att jag kunde kolla upp det här"
+
+OUTPUT "Stämmer dem här uppgifterna?"
+OUTPUT user_email
+OUTPUT header
+OUTPUT boring_text
+OUTPUT "Status" customer_status
+
+INPUT save_exit
+
+IF save_exit EQUAL "Ja"
+OUTPUT "Tack för informationen, vi kontaktar er snarast"
+exit application
+
+ELSE
+OUTPUT "Försent!"
+exit application.
